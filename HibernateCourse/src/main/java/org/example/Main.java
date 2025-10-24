@@ -13,18 +13,31 @@ public class Main {
         student.setName("Jimmy");
         student.setAge(25);
         student.setRollNo(4);
+
+//        Configuration cfg = new Configuration();
+//        cfg.addAnnotatedClass(org.example.Student.class);
+//        cfg.configure("hibernate.cfg.xml");
+//
+//        try(SessionFactory sessionFactory = cfg.buildSessionFactory()) {
+//            Session session = sessionFactory.openSession();
+//
+//            Transaction transaction = session.beginTransaction();
+//            session.persist(student);
+//            transaction.commit();
+//        }
+
+        // OR
+
+        try(SessionFactory sf = new Configuration()
+                .addAnnotatedClass(org.example.Student.class).
+                configure("hibernate.cfg.xml").
+                buildSessionFactory()) {
+            Session session = sf.getCurrentSession();
+            Transaction transaction = session.beginTransaction();
+            session.persist(student);
+            transaction.commit();
+        }
+
         System.out.println(student);
-
-        Configuration cfg = new Configuration();
-        cfg.addAnnotatedClass(org.example.Student.class);
-        cfg.configure("hibernate.cfg.xml");
-
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-
-        Transaction transaction = session.beginTransaction();
-        session.persist(student);
-        transaction.commit();
-
     }
 }
