@@ -49,6 +49,17 @@ public class Main {
         student = session.find(org.example.Student.class, 1);
 
         System.out.println(student);
+
+        Student updatedStudent = new Student();
+        updatedStudent.setName("Jimmy");
+        updatedStudent.setAge(30);
+        updatedStudent.setRollNo(4);
+
+        Transaction transaction = session.beginTransaction();
+        session.merge(updatedStudent); // save or update
+//        session.remove(student); // Delete
+        transaction.commit();
+
         session.close();
         sf.close();
     }
