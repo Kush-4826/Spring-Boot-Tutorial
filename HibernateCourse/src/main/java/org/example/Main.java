@@ -9,10 +9,10 @@ import org.hibernate.cfg.Configuration;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Student student = new Student();
-        student.setName("Jimmy");
-        student.setAge(25);
-        student.setRollNo(4);
+//        Student student = new Student();
+//        student.setName("Jimmy");
+//        student.setAge(25);
+//        student.setRollNo(4);
 
         /*********************************** INSERTING DATA **********************************/
 
@@ -33,6 +33,7 @@ public class Main {
         SessionFactory sf = new Configuration()
                 .addAnnotatedClass(Student.class)
                 .addAnnotatedClass(Alien.class)
+                .addAnnotatedClass(Laptop.class)
                 .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
         Session session = sf.openSession();
@@ -47,18 +48,33 @@ public class Main {
 
         /*********************************** INSERTING DATA **********************************/
 
-        student = session.find(org.example.Student.class, 1);
+//        student = session.find(org.example.Student.class, 1);
+//
+//        System.out.println(student);
 
-        System.out.println(student);
+//        Student updatedStudent = new Student();
+//        updatedStudent.setName("Jimmy");
+//        updatedStudent.setAge(30);
+//        updatedStudent.setRollNo(4);
 
-        Student updatedStudent = new Student();
-        updatedStudent.setName("Jimmy");
-        updatedStudent.setAge(30);
-        updatedStudent.setRollNo(4);
+        Laptop laptop = new Laptop();
+        laptop.setId(1);
+        laptop.setBrand("Lenovo");
+        laptop.setModel("Ideapad");
+        laptop.setRam(16);
+
+        Alien alien = new Alien();
+        alien.setaId(1);
+        alien.setaName("Kush");
+        alien.setLaptop(laptop);
+        alien.setTech("Java");
 
         Transaction transaction = session.beginTransaction();
-        session.merge(updatedStudent); // save or update
+//        session.merge(updatedStudent); // save or update
 //        session.remove(student); // Delete
+
+        session.persist(laptop);
+        session.persist(alien);
         transaction.commit();
 
         session.close();

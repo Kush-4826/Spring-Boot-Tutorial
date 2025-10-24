@@ -12,9 +12,10 @@ public class Alien {
     @Column(name = "a_name")
     private String aName;
 
-    // does not create tech column in db
-    @Transient
     private String tech;
+
+    @OneToOne
+    private Laptop laptop;
 
     public int getaId() {
         return aId;
@@ -40,12 +41,21 @@ public class Alien {
         this.tech = tech;
     }
 
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
+
     @Override
     public String toString() {
         return "Alien{" +
                 "aId=" + aId +
                 ", aName='" + aName + '\'' +
                 ", tech='" + tech + '\'' +
+                ", laptop=" + laptop +
                 '}';
     }
 }
