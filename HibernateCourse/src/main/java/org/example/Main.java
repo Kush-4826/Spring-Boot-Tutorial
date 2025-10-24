@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Arrays;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -63,17 +65,27 @@ public class Main {
         laptop.setModel("Ideapad");
         laptop.setRam(16);
 
+        Laptop laptop2 = new Laptop();
+        laptop2.setId(2);
+        laptop2.setBrand("Dell");
+        laptop2.setModel("XPS");
+        laptop2.setRam(16);
+
         Alien alien = new Alien();
         alien.setaId(1);
         alien.setaName("Kush");
-        alien.setLaptop(laptop);
+        alien.setLaptops(Arrays.asList(laptop, laptop2));
         alien.setTech("Java");
+
+        laptop.setAlien(alien);
+        laptop2.setAlien(alien);
 
         Transaction transaction = session.beginTransaction();
 //        session.merge(updatedStudent); // save or update
 //        session.remove(student); // Delete
 
         session.persist(laptop);
+        session.persist(laptop2);
         session.persist(alien);
         transaction.commit();
 
