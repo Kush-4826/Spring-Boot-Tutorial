@@ -14,6 +14,8 @@ public class Main {
         student.setAge(25);
         student.setRollNo(4);
 
+        /*********************************** INSERTING DATA **********************************/
+
 //        Configuration cfg = new Configuration();
 //        cfg.addAnnotatedClass(org.example.Student.class);
 //        cfg.configure("hibernate.cfg.xml");
@@ -28,16 +30,26 @@ public class Main {
 
         // OR
 
-        try(SessionFactory sf = new Configuration()
+        SessionFactory sf = new Configuration()
                 .addAnnotatedClass(org.example.Student.class).
                 configure("hibernate.cfg.xml").
-                buildSessionFactory()) {
-            Session session = sf.getCurrentSession();
-            Transaction transaction = session.beginTransaction();
-            session.persist(student);
-            transaction.commit();
-        }
+                buildSessionFactory();
+        Session session = sf.openSession();
+//        Transaction transaction = session.beginTransaction();
+
+//        session.persist(student);
+
+//        transaction.commit();
+
+
+//        System.out.println(student);
+
+        /*********************************** INSERTING DATA **********************************/
+
+        student = session.find(org.example.Student.class, 1);
 
         System.out.println(student);
+        session.close();
+        sf.close();
     }
 }
