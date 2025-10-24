@@ -31,9 +31,10 @@ public class Main {
         // OR
 
         SessionFactory sf = new Configuration()
-                .addAnnotatedClass(org.example.Student.class).
-                configure("hibernate.cfg.xml").
-                buildSessionFactory();
+                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Alien.class)
+                .configure("hibernate.cfg.xml")
+                .buildSessionFactory();
         Session session = sf.openSession();
 //        Transaction transaction = session.beginTransaction();
 
