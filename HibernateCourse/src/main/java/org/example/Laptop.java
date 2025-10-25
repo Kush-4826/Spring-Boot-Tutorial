@@ -2,9 +2,9 @@ package org.example;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
-@Entity(name = "laptops")
+@Entity
+@Table(name = "laptops")
 public class Laptop {
     @Id
     private int id;
