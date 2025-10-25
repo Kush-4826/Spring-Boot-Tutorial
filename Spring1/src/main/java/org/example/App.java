@@ -18,6 +18,7 @@ public class App {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         System.out.println( "Hello World!" );
 
+        System.out.println("-------------------------------------------------------------");
         Alien alien = (Alien)context.getBean("alien");
         // The setAge will change the age for both the alien and alien1 references, if the
         // bean scope is set to singleton. As the internal object remains the same.
@@ -27,8 +28,14 @@ public class App {
         System.out.println(alien.getAge());
         alien.code();
 
-//        Alien alien1 = (Alien)context.getBean("alien");
-//        System.out.println(alien1.getAge());
-//        alien1.code();
+        System.out.println("-------------------------------------------------------------");
+        Alien alien1 = (Alien)context.getBean("alien1");
+        System.out.println(alien1.getAge());
+        alien1.code();
+
+        System.out.println("-------------------------------------------------------------");
+        Alien alien2 = (Alien)context.getBean("alien2");
+        System.out.println(alien2.getAge());
+        alien2.code();
     }
 }
