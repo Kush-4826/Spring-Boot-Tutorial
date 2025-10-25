@@ -1,5 +1,6 @@
 package org.example.config;
 
+import org.example.Alien;
 import org.example.Desktop;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,5 +29,14 @@ public class AppConfig {
     @Bean(name = {"com1", "desktop1"})
     public Desktop getDesktop() {
         return new Desktop();
+    }
+
+    @Bean
+    public Alien alien() {
+        Alien alien = new Alien();
+        // Setter Injection....
+        alien.setAge(30);
+        alien.setComputerSystem(desktop());
+        return alien;
     }
 }
