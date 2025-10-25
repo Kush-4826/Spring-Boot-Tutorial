@@ -35,5 +35,8 @@ using the setter setAge().-->
     </bean>
 
     <bean id="computerSystem" class="org.example.Laptop" />
-    <bean id="desktop" class="org.example.Desktop" />
+<!-- when the scope of the bean is set to singleton, the object of the bean is created as soon as we get the
+ context. but setting the lazy-init to true, will not create the object of that bean even if it is
+ singleton. it'll create the object of singleton bean when we try to access it using the getBean() -->
+    <bean id="desktop" class="org.example.Desktop" lazy-init="true"/>
 </beans>
