@@ -13,7 +13,11 @@ on every getBean call.-->
 using the setter setAge().-->
         <property name="age" value="69" />
 <!-- This is called adding reference of one bean to another bean -->
-        <property name="computerSystem" ref="computerSystem" />
+<!--        <property name="computerSystem" ref="computerSystem" />-->
+<!-- This is called inner bean   -->
+        <property name="computerSystem">
+            <bean class="org.example.Laptop" />
+        </property>
     </bean>
 
     <bean id="alien1" class="org.example.Alien" scope="prototype">
