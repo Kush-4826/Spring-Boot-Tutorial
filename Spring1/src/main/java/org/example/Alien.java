@@ -2,7 +2,7 @@ package org.example;
 
 public class Alien {
     private int age;
-    private Laptop laptop;
+    private ComputerSystem computerSystem;
 
     public Alien() {
         System.out.println("Alien constructor called");
@@ -13,15 +13,15 @@ public class Alien {
         this.age = age;
     }
 
-    public Alien(int age, Laptop laptop) {
+    public Alien(int age, ComputerSystem computerSystem) {
         System.out.println("Alien parameterized constructor called (2 arguments)");
         this.age = age;
-        this.laptop = laptop;
+        this.computerSystem = computerSystem;
     }
 
     public void code() {
         System.out.println("Coding...");
-        laptop.compile();
+        computerSystem.compile();
     }
 
     public void setAge(int age) {
@@ -32,11 +32,11 @@ public class Alien {
         return age;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public ComputerSystem getComputerSystem() {
+        return computerSystem;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setComputerSystem(ComputerSystem computerSystem) {
+        this.computerSystem = computerSystem;
     }
 }

@@ -13,18 +13,19 @@ on every getBean call.-->
 using the setter setAge().-->
         <property name="age" value="69" />
 <!-- This is called adding reference of one bean to another bean -->
-        <property name="laptop" ref="laptop" />
+        <property name="computerSystem" ref="laptop" />
     </bean>
 
     <bean id="alien1" class="org.example.Alien" scope="prototype">
         <constructor-arg name="age" value="69" />
-        <property name="laptop" ref="laptop" />
+        <property name="computerSystem" ref="laptop" />
     </bean>
 
     <bean id="alien2" class="org.example.Alien" scope="prototype">
         <constructor-arg name="age" value="169" />
-        <constructor-arg name="laptop" ref="laptop" />
+        <constructor-arg name="computerSystem" ref="desktop" />
     </bean>
 
     <bean id="laptop" class="org.example.Laptop" />
+    <bean id="desktop" class="org.example.Desktop" />
 </beans>
