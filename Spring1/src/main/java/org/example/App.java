@@ -24,11 +24,11 @@ public class App {
         // But as soon as the scope is changed to prototype, the alien and alien1 references
         // point to 2 different objects..!!
         alien.setAge(30);
-        System.out.println(alien.age);
-//        alien.code();
+        System.out.println(alien.getAge());
+        alien.code();
 
-        Alien alien1 = (Alien)context.getBean("alien");
-        System.out.println(alien1.age);
+//        Alien alien1 = (Alien)context.getBean("alien");
+//        System.out.println(alien1.getAge());
 //        alien1.code();
     }
 }

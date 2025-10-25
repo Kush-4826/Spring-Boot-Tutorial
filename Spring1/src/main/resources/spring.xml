@@ -12,6 +12,8 @@ on every getBean call.-->
 <!--        This is called setter injection. I am injecting the value of the age property
 using the setter setAge().-->
         <property name="age" value="69" />
+<!-- This is called adding reference of one bean to another bean -->
+        <property name="laptop" ref="laptop" />
     </bean>
 
     <bean id="laptop" class="org.example.Laptop" />
