@@ -11,7 +11,7 @@ public class App {
     public static void main( String[] args ) {
 
         // Creating a context from XML based configurations.
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
         System.out.println( "Hello World!" );
         Alien alien = (Alien)context.getBean("alien");
