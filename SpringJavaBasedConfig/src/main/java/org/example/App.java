@@ -16,8 +16,8 @@ public class App {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("(Accessing Bean using Type Example)");
 //        Accessing the bean based on the type of the bean
-        Desktop desktop = context.getBean(Desktop.class);
-        desktop.compile();
+        Laptop laptop = context.getBean(Laptop.class);
+        laptop.compile();
 
         System.out.println("--------------------------------------------------------------------");
         System.out.println("(Accessing Bean using name Example)");

@@ -1,7 +1,10 @@
 package org.example.config;
 
 import org.example.Alien;
+import org.example.ComputerSystem;
 import org.example.Desktop;
+import org.example.Laptop;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -17,8 +20,8 @@ public class AppConfig {
     @Bean
     @Primary
     @Scope("prototype")
-    public Desktop desktop() {
-        return new Desktop();
+    public Laptop laptop() {
+        return new Laptop();
     }
 
     /**
@@ -31,12 +34,20 @@ public class AppConfig {
         return new Desktop();
     }
 
+    /**
+     * The @Autowired argument will automatically try to connect one of the beans of the matching
+     * type to this argument. Since the type here is ComputerSystem, any of the beans of the
+     * implementation of ComputerSystem interface will be wired.
+     * Here the primary Bean of ComputerSystem implementation is Laptop, so it gets wired...
+     * @param computer
+     * @return
+     */
     @Bean
-    public Alien alien() {
+    public Alien alien(@Autowired ComputerSystem computer) {
         Alien alien = new Alien();
         // Setter Injection....
         alien.setAge(30);
-        alien.setComputerSystem(desktop());
+        alien.setComputerSystem(computer);
         return alien;
     }
 }
