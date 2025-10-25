@@ -16,5 +16,9 @@ public class App {
 //        Accessing the bean based on the type of the bean
         Desktop desktop = context.getBean(Desktop.class);
         desktop.compile();
+
+//        Accessing the bean based on the name of the bean
+        Desktop desktop2 = context.getBean("com1", Desktop.class);
+        desktop2.compile();
     }
 }
