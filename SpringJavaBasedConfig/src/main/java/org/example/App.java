@@ -29,5 +29,11 @@ public class App {
         System.out.println("(Prototype Scope Example)");
         Desktop desktop3 = context.getBean(Desktop.class);
         desktop3.compile();
+
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("(Autowiring Example)");
+        Alien alien = context.getBean(Alien.class);
+        System.out.println("Age: " + alien.getAge());
+        alien.code();
     }
 }
