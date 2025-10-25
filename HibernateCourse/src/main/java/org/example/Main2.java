@@ -22,10 +22,17 @@ public class Main2 {
         // SELECT * FROM laptops WHERE ram = 32; -> SQL
         // FROM Laptop WHERE ram = 32; -> HQL
 
-        Query<Laptop> query = session.createQuery("from Laptop WHERE ram < 32", Laptop.class);
-        List<Laptop> laptops = query.getResultList();
+        String brand = "Lenovo";
 
-        System.out.println(laptops);
+        Query<String[]> query = session.createQuery("select brand, model from Laptop WHERE brand like ?1", String[].class);
+        query.setParameter(1, brand);
+        List<String[]> laptops = query.getResultList();
+
+        for(String[] laptop : laptops){
+            System.out.println(laptop[0] +  " " + laptop[1]);
+        }
+
+//        System.out.println(laptops);
 
         session.close();
         sf.close();
