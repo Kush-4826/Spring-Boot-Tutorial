@@ -5,9 +5,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Arrays;
-import java.util.List;
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -78,28 +75,34 @@ public class Main {
         laptop3.setModel("Macbook Pro");
         laptop3.setRam(16);
 
-        Alien alien = new Alien();
-        alien.setaId(1);
-        alien.setaName("Kush");
-        alien.setTech("Java");
-
-        Alien alien2 = new Alien();
-        alien2.setaId(2);
-        alien2.setaName("John");
-        alien2.setTech("Python");
-
-        Alien alien3 = new Alien();
-        alien3.setaId(3);
-        alien3.setaName("Jimmy");
-        alien3.setTech("C");
-
-        alien.setLaptops(Arrays.asList(laptop, laptop2));
-        alien2.setLaptops(Arrays.asList(laptop2, laptop3));
-        alien3.setLaptops(List.of(laptop));
-
-        laptop.setAliens(Arrays.asList(alien, alien3));
-        laptop2.setAliens(Arrays.asList(alien2, alien));
-        laptop3.setAliens(List.of(alien2));
+        Laptop laptop4 = new Laptop();
+        laptop4.setId(4);
+        laptop4.setBrand("HP");
+        laptop4.setModel("Envy");
+        laptop4.setRam(32);
+//
+//        Alien alien = new Alien();
+//        alien.setaId(1);
+//        alien.setaName("Kush");
+//        alien.setTech("Java");
+//
+//        Alien alien2 = new Alien();
+//        alien2.setaId(2);
+//        alien2.setaName("John");
+//        alien2.setTech("Python");
+//
+//        Alien alien3 = new Alien();
+//        alien3.setaId(3);
+//        alien3.setaName("Jimmy");
+//        alien3.setTech("C");
+//
+//        alien.setLaptops(Arrays.asList(laptop, laptop2));
+//        alien2.setLaptops(Arrays.asList(laptop2, laptop4));
+//        alien3.setLaptops(List.of(laptop));
+//
+//        laptop.setAliens(Arrays.asList(alien, alien3));
+//        laptop2.setAliens(Arrays.asList(alien2, alien));
+//        laptop4.setAliens(List.of(alien2));
 
         Transaction transaction = session.beginTransaction();
 //        session.merge(updatedStudent); // save or update
@@ -108,9 +111,10 @@ public class Main {
         session.persist(laptop);
         session.persist(laptop2);
         session.persist(laptop3);
-        session.persist(alien);
-        session.persist(alien2);
-        session.persist(alien3);
+        session.persist(laptop4);
+//        session.persist(alien);
+//        session.persist(alien2);
+//        session.persist(alien3);
         transaction.commit();
 
         Alien a5 = session.get(Alien.class, 2);
