@@ -4,7 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!--    Created a new Bean with id alien of Alien Class....-->
-    <bean id="alien" class="org.example.Alien"/>
+<!--    Setting the scope of a bean to a prototype will create a new object of the bean
+everytime we call the getBean method.
+By default the scope of the bean is a singleton bean in which the same bean object is returned
+on every getBean call.-->
+    <bean id="alien" class="org.example.Alien" scope="prototype">
+        <property name="age" value="69" />
+    </bean>
 
     <bean id="laptop" class="org.example.Laptop" />
 </beans>
