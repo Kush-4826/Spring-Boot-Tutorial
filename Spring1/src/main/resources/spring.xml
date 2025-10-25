@@ -16,5 +16,15 @@ using the setter setAge().-->
         <property name="laptop" ref="laptop" />
     </bean>
 
+    <bean id="alien1" class="org.example.Alien" scope="prototype">
+        <constructor-arg name="age" value="69" />
+        <property name="laptop" ref="laptop" />
+    </bean>
+
+    <bean id="alien2" class="org.example.Alien" scope="prototype">
+        <constructor-arg name="age" value="169" />
+        <constructor-arg name="laptop" ref="laptop" />
+    </bean>
+
     <bean id="laptop" class="org.example.Laptop" />
 </beans>
