@@ -9,6 +9,8 @@ everytime we call the getBean method.
 By default the scope of the bean is a singleton bean in which the same bean object is returned
 on every getBean call.-->
     <bean id="alien" class="org.example.Alien" scope="prototype">
+<!--        This is called setter injection. I am injecting the value of the age property
+using the setter setAge().-->
         <property name="age" value="69" />
     </bean>
 
