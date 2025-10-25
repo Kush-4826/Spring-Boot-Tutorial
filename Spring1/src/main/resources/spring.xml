@@ -13,12 +13,12 @@ on every getBean call.-->
 using the setter setAge().-->
         <property name="age" value="69" />
 <!-- This is called adding reference of one bean to another bean -->
-        <property name="computerSystem" ref="laptop" />
+        <property name="computerSystem" ref="computerSystem" />
     </bean>
 
     <bean id="alien1" class="org.example.Alien" scope="prototype">
         <constructor-arg name="age" value="69" />
-        <property name="computerSystem" ref="laptop" />
+        <property name="computerSystem" ref="computerSystem" />
     </bean>
 
     <bean id="alien2" class="org.example.Alien" scope="prototype">
@@ -26,6 +26,14 @@ using the setter setAge().-->
         <constructor-arg name="computerSystem" ref="desktop" />
     </bean>
 
-    <bean id="laptop" class="org.example.Laptop" />
+<!--  This is a bean with autowiring enabled. In this the autowiring is done by name,
+  It means that if there is a reference in Alien class with name computerSystem and i
+  have created a separate bean with the same name, the Spring will automatically
+  wire that bean with the computerSystem property in the Alien class -->
+    <bean id="alien3" class="org.example.Alien" scope="prototype" autowire="byName">
+        <constructor-arg name="age" value="269" />
+    </bean>
+
+    <bean id="computerSystem" class="org.example.Laptop" />
     <bean id="desktop" class="org.example.Desktop" />
 </beans>
