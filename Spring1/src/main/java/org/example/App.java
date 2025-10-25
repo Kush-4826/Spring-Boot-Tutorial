@@ -19,7 +19,9 @@ public class App {
         System.out.println( "Hello World!" );
 
         System.out.println("-------------------------------------------------------------");
-        Alien alien = (Alien)context.getBean("alien");
+//        Alien alien = (Alien)context.getBean("alien");
+        // OR
+        Alien alien = context.getBean("alien", Alien.class);
         // The setAge will change the age for both the alien and alien1 references, if the
         // bean scope is set to singleton. As the internal object remains the same.
         // But as soon as the scope is changed to prototype, the alien and alien1 references
