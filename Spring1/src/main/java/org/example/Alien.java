@@ -8,6 +8,17 @@ public class Alien {
         System.out.println("Alien constructor called");
     }
 
+    public Alien(int age) {
+        System.out.println("Alien parameterized constructor called (1 argument)");
+        this.age = age;
+    }
+
+    public Alien(int age, Laptop laptop) {
+        System.out.println("Alien parameterized constructor called (2 arguments)");
+        this.age = age;
+        this.laptop = laptop;
+    }
+
     public void code() {
         System.out.println("Coding...");
         laptop.compile();
