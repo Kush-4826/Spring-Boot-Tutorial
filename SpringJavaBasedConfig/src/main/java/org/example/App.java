@@ -22,7 +22,7 @@ public class App {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("(Accessing Bean using name Example)");
 //        Accessing the bean based on the name of the bean
-        Desktop desktop2 = context.getBean("com1", Desktop.class);
+        Desktop desktop2 = context.getBean("desktop", Desktop.class);
         desktop2.compile();
 
         System.out.println("--------------------------------------------------------------------");

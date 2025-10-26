@@ -1,7 +1,13 @@
 package org.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Alien {
     private int age;
+
     private ComputerSystem computerSystem;
 
     public Alien() {
@@ -18,6 +24,11 @@ public class Alien {
         this.age = age;
         this.computerSystem = computerSystem;
     }
+
+//    @Autowired
+//    public Alien(@Qualifier("desktop") ComputerSystem computerSystem) {
+//        this.computerSystem = computerSystem;
+//    }
 
     public void code() {
         System.out.println("Coding...");
@@ -36,7 +47,8 @@ public class Alien {
         return computerSystem;
     }
 
-    public void setComputerSystem(ComputerSystem computerSystem) {
+    @Autowired
+    public void setComputerSystem(@Qualifier("desktop") ComputerSystem computerSystem) {
         this.computerSystem = computerSystem;
     }
 }
