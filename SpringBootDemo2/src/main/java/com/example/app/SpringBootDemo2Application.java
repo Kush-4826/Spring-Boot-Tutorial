@@ -1,5 +1,6 @@
 package com.example.app;
 
+import com.example.app.model.Alien;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -26,7 +27,7 @@ public class SpringBootDemo2Application {
 
         /*
         Directly trying to get the bean of Alien class will result in this exception
-        in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.app.Alien' available
+        in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.app.model.Alien' available
         to avoid this exception, we need to add the @Component annotation above the Alien class.
         This annotation makes sure that the spring framework knows that this class is a bean
          */
