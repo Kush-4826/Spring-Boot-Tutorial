@@ -1,6 +1,8 @@
 package com.example.app;
 
 import com.example.app.model.Alien;
+import com.example.app.model.Laptop;
+import com.example.app.service.LaptopService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -32,11 +34,14 @@ public class SpringBootDemo2Application {
         This annotation makes sure that the spring framework knows that this class is a bean
          */
 
-//        Laptop laptop = context.getBean(Laptop.class);
-//        laptop.compile();
+        LaptopService service = context.getBean(LaptopService.class);
 
-        Alien alien2 = context.getBean(Alien.class);
-        System.out.println("Age: " + alien2.getAge());
-        alien2.code();
+        Laptop laptop = context.getBean(Laptop.class);
+        service.addLaptop(laptop);
+        laptop.compile();
+
+//        Alien alien2 = context.getBean(Alien.class);
+//        System.out.println("Age: " + alien2.getAge());
+//        alien2.code();
 	}
 }
