@@ -12,7 +12,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(){
-        return "index.jsp";
+        return "index";
     }
 
     @RequestMapping("add")
@@ -22,6 +22,6 @@ public class HomeController {
 //        int num2 = Integer.parseInt(request.getParameter("num2"));
         int res = num + num2;
         model.addAttribute("res", res);
-        return "add.jsp";
+        return "add";
     }
 }
