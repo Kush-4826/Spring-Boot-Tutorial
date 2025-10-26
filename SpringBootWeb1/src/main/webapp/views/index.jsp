@@ -7,11 +7,11 @@
 <body>
     <h1>Hello, World..!</h1>
 
-    <form action="add">
-        <label for="num1">Number 1: </label>
-        <input type="text" id="num1" name="num1"><br>
-        <label for="num2">Number 2: </label>
-        <input type="text" id="num2" name="num2"><br>
+    <form action="addAlien">
+        <label for="id">ID: </label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name"><br>
         <input type="submit" value="Submit">
     </form>
 </body>
