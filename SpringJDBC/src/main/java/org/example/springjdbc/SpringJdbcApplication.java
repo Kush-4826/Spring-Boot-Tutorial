@@ -17,7 +17,7 @@ public class SpringJdbcApplication {
         StudentService studentService = context.getBean(StudentService.class);
 
         Student s = context.getBean(Student.class);
-        s.setRollNo(1);
+        s.setRollNo(4);
         s.setName("Kush");
         s.setMarks(100);
 
