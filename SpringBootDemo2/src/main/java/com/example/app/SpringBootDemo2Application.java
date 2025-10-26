@@ -31,10 +31,11 @@ public class SpringBootDemo2Application {
         This annotation makes sure that the spring framework knows that this class is a bean
          */
 
-        Laptop laptop = context.getBean(Laptop.class);
-        laptop.compile();
+//        Laptop laptop = context.getBean(Laptop.class);
+//        laptop.compile();
 
         Alien alien2 = context.getBean(Alien.class);
+        System.out.println("Age: " + alien2.getAge());
         alien2.code();
 	}
 }
