@@ -43,4 +43,20 @@ public class JobRepository {
         }
         return null;
     }
+
+    public void updateJob(JobPost job) {
+        for(JobPost jobPost : this.jobs) {
+            if(jobPost.getPostId().equals(job.getPostId())) {
+                jobPost.setPostProfile(job.getPostProfile());
+                jobPost.setPostDesc(job.getPostDesc());
+                jobPost.setPostTechStack(job.getPostTechStack());
+                jobPost.setReqExperience(job.getReqExperience());
+            }
+        }
+    }
+
+    public void deleteJob(String id) {
+        JobPost post = getJobById(id);
+        this.jobs.remove(post);
+    }
 }

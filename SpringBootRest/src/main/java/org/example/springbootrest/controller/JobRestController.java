@@ -32,4 +32,15 @@ public class JobRestController {
     public void addJob(@RequestBody JobPost job) {
         this.jobService.addJob(job);
     }
+
+    @PutMapping("jobPost")
+    public JobPost updateJob(@RequestBody JobPost job) {
+        this.jobService.updateJob(job);
+        return this.jobService.getJobById(job.getPostId());
+    }
+
+    @DeleteMapping("jobPost/{id}")
+    public void deleteJobById(@PathVariable String id) {
+        this.jobService.deleteJob(id);
+    }
 }
