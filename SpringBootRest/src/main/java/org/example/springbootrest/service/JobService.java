@@ -23,4 +23,8 @@ public class JobService {
     public List<JobPost> getJobs() {
         return this.jobRepository.getJobs();
     }
+
+    public JobPost getJobById(String id) {
+        return this.jobRepository.getJobById(id);
+    }
 }

@@ -34,4 +34,13 @@ public class JobRepository {
     public void addJob(JobPost jobPost) {
         this.jobs.add(jobPost);
     }
+
+    public JobPost getJobById(String id) {
+        for(JobPost job : this.jobs) {
+            if(job.getPostId().equals(id)) {
+                return job;
+            }
+        }
+        return null;
+    }
 }
