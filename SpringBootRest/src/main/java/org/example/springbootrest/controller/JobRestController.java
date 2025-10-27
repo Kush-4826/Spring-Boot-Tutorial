@@ -3,10 +3,7 @@ package org.example.springbootrest.controller;
 import org.example.springbootrest.model.JobPost;
 import org.example.springbootrest.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,10 @@ public class JobRestController {
     @GetMapping("jobPost/{id}")
     public JobPost getJobById(@PathVariable String id) {
         return this.jobService.getJobById(id);
+    }
+
+    @PostMapping("jobPost")
+    public void addJob(@RequestBody JobPost job) {
+        this.jobService.addJob(job);
     }
 }
