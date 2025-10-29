@@ -1,5 +1,7 @@
 package org.example.springecommerce.controller;
 
+import org.example.springecommerce.exceptions.ProductNotFoundException;
+import org.example.springecommerce.exceptions.ProductsTableEmptyException;
 import org.example.springecommerce.model.Product;
 import org.example.springecommerce.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -21,17 +23,23 @@ public class ProductController extends ApiController {
     }
 
     @GetMapping("products")
-    public ResponseEntity<List<Product>> index() {
-        return new ResponseEntity<>(this.productService.getAllProducts(), HttpStatus.OK);
+    public ResponseEntity<?> index() {
+        try {
+            List<Product> products = this.productService.getAllProducts();
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        } catch (ProductsTableEmptyException e) {
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("products/{id}")
     public ResponseEntity<Object> show(@PathVariable String id) {
-        Product p = this.productService.getProductById(id);
-
-        if (p == null)
-            return new ResponseEntity<>(Map.of("error", "Product Not Found"), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(p, HttpStatus.OK);
+        try {
+            Product p = this.productService.getProductById(id);
+            return new ResponseEntity<>(p, HttpStatus.OK);
+        } catch (ProductNotFoundException e) {
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/products")
@@ -47,9 +55,11 @@ public class ProductController extends ApiController {
 
     @GetMapping("/products/{id}/image")
     public ResponseEntity<?> getImage(@PathVariable String id) {
-        Product p = this.productService.getProductById(id);
-        if (p == null)
-            return new ResponseEntity<>(Map.of("error", "Product Not Found"), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(p.getImageData(), HttpStatus.OK);
+        try {
+            Product p = this.productService.getProductById(id);
+            return new ResponseEntity<>(p.getImageData(), HttpStatus.OK);
+        } catch (ProductNotFoundException e) {
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package org.example.springecommerce.service;
 
+import org.example.springecommerce.exceptions.ProductNotFoundException;
+import org.example.springecommerce.exceptions.ProductsTableEmptyException;
 import org.example.springecommerce.model.Product;
 import org.example.springecommerce.repo.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -16,12 +18,17 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProducts() {
-        return this.productRepository.findAll();
+    public List<Product> getAllProducts() throws ProductsTableEmptyException {
+        List<Product> list = this.productRepository.findAll();
+        if(list.isEmpty())
+            throw new ProductsTableEmptyException();
+        return list;
     }
 
-    public Product getProductById(String id) {
-        return this.productRepository.findById(id).orElse(null);
+    public Product getProductById(String id) throws ProductNotFoundException {
+        Product p = this.productRepository.findById(id).orElse(null);
+        if(p == null) throw new ProductNotFoundException(id);
+        return p;
     }
 
     public Product storeProduct(Product product, MultipartFile file) throws IOException {
