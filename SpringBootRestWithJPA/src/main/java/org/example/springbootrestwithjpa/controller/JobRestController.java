@@ -3,6 +3,7 @@ package org.example.springbootrestwithjpa.controller;
 import org.example.springbootrestwithjpa.model.JobPost;
 import org.example.springbootrestwithjpa.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class JobRestController {
     }
 
     @GetMapping("jobPost/{id}")
-    public JobPost getJobById(@PathVariable String id) {
+    public JobPost getJobById(@PathVariable int id) {
         return this.jobService.getJobById(id);
     }
 
@@ -40,7 +41,13 @@ public class JobRestController {
     }
 
     @DeleteMapping("jobPost/{id}")
-    public void deleteJobById(@PathVariable String id) {
+    public void deleteJobById(@PathVariable int id) {
         this.jobService.deleteJob(id);
+    }
+
+    @GetMapping("jobPosts/load")
+    public ResponseEntity<String> load() {
+        this.jobService.load();
+        return ResponseEntity.ok().body("Loaded");
     }
 }
