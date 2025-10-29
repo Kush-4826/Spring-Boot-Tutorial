@@ -29,9 +29,7 @@ public class Product {
     private boolean productAvailable;
     private int stockQuantity;
     private String imageName;
-    @JsonIgnore
     private String imageType;
     @Lob
-    @JsonIgnore
     private byte[] imageData;
 }
