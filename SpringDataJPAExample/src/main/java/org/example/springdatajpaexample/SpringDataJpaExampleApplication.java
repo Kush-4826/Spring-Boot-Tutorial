@@ -33,6 +33,8 @@ public class SpringDataJpaExampleApplication {
         studentRepo.save(s1);
         studentRepo.save(s2);
         studentRepo.save(s3);
+
+        studentRepo.findAll().forEach(System.out::println);
     }
 
 }
