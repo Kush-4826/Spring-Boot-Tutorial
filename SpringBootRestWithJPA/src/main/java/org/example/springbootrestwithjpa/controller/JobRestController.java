@@ -44,10 +44,4 @@ public class JobRestController {
     public void deleteJobById(@PathVariable int id) {
         this.jobService.deleteJob(id);
     }
-
-    @GetMapping("jobPosts/load")
-    public ResponseEntity<String> load() {
-        this.jobService.load();
-        return ResponseEntity.ok().body("Loaded");
-    }
 }
