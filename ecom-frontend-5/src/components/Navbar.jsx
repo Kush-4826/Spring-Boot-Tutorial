@@ -36,7 +36,7 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
       setShowSearchResults(true)
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/products/search?keyword=${value}`
+        `http://localhost:8080/api/products/search?query=${value}`
       );
       setSearchResults(response.data);
       setNoResults(response.data.length === 0);
