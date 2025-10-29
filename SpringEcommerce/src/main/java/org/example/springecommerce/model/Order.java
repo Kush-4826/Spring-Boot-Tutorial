@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.springecommerce.generator.OrderIdGen;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,9 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column(unique = true)
+    @OrderIdGen
     private String orderId;
     private String customerName;
     private String email;

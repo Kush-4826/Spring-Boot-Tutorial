@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class OrderService {
@@ -30,7 +29,7 @@ public class OrderService {
 
     public OrderResponse placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
-        order.setOrderId("ORD" + UUID.randomUUID().toString().toUpperCase().substring(0, 8));
+//        order.setOrderId("ORD" + UUID.randomUUID().toString().toUpperCase().substring(0, 8));
         order.setCustomerName(orderRequest.customerName());
         order.setEmail(orderRequest.email());
         order.setStatus("PLACED");
@@ -75,25 +74,25 @@ public class OrderService {
                 savedOrder.getStatus(),
                 savedOrder.getOrderDate(),
                 orderItemResponses
-            );
+        );
 
         return orderResponse;
     }
 
     public List<OrderResponse> getAllOrderResponses() {
-        List<Order>  orders = orderRepository.findAll();
+        List<Order> orders = orderRepository.findAll();
         List<OrderResponse> orderResponses = new ArrayList<>();
 
         orders.forEach(order -> {
             List<OrderItemResponse> orderItemResponses = new ArrayList<>();
 
             order.getOrderItems().forEach(orderItem -> {
-               OrderItemResponse response = new OrderItemResponse(
-                       orderItem.getProduct().getName(),
-                       orderItem.getQuantity(),
-                       orderItem.getTotalPrice()
-               );
-               orderItemResponses.add(response);
+                OrderItemResponse response = new OrderItemResponse(
+                        orderItem.getProduct().getName(),
+                        orderItem.getQuantity(),
+                        orderItem.getTotalPrice()
+                );
+                orderItemResponses.add(response);
             });
 
             OrderResponse orderResponse = new OrderResponse(
