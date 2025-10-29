@@ -44,4 +44,9 @@ public class JobRestController {
     public void deleteJobById(@PathVariable int id) {
         this.jobService.deleteJob(id);
     }
+
+    @GetMapping("jobPosts/search")
+    public List<JobPost> searchJob(@RequestParam String q) {
+        return this.jobService.searchByKeyword(q);
+    }
 }
