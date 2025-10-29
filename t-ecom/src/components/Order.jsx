@@ -13,6 +13,7 @@ const Order = () => {
       try {
         const response = await axios.get(`${baseUrl}/api/orders`);
         setOrders(response.data);
+        console.log(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -152,7 +153,7 @@ const Order = () => {
                                   <tbody>
                                     {order.items.map((item, index) => (
                                       <tr key={index}>
-                                        <td>{item.productName}</td>
+                                        <td>{item.name}</td>
                                         <td className="text-center">{item.quantity}</td>
                                         <td className="text-end">{formatCurrency(item.totalPrice)}</td>
                                       </tr>
