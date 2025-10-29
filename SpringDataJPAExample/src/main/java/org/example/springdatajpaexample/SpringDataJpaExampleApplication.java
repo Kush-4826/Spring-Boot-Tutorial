@@ -43,6 +43,13 @@ public class SpringDataJpaExampleApplication {
         System.out.println("-------findById()----------");
         System.out.println(studentRepo.findById(101).orElse(null));
 
+        System.out.println("-----------------------------------------------------");
+        System.out.println("-------findStudentByName()----------");
+        System.out.println(studentRepo.findStudentByName("John"));
+
+        System.out.println("-----------------------------------------------------");
+        System.out.println("-------findStudentByMarksLessThan()----------");
+        studentRepo.findStudentByMarksLessThan(70).forEach(System.out::println);
     }
 
 }
