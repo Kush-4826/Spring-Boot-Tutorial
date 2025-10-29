@@ -50,6 +50,18 @@ public class SpringDataJpaExampleApplication {
         System.out.println("-----------------------------------------------------");
         System.out.println("-------findStudentByMarksLessThan()----------");
         studentRepo.findStudentByMarksLessThan(70).forEach(System.out::println);
+
+        System.out.println("-----------------------------------------------------");
+        System.out.println("-------updating data----------");
+        System.out.println(studentRepo.findById(102).orElse(null));
+        s2.setName("William");
+        studentRepo.save(s2);
+        System.out.println(studentRepo.findById(102).orElse(null));
+
+        System.out.println("-----------------------------------------------------");
+        System.out.println("-------deleting data----------");
+        studentRepo.delete(s2);
+        studentRepo.findAll().forEach(System.out::println);
     }
 
 }
