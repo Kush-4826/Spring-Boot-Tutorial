@@ -5,8 +5,6 @@ import org.example.springbootrestwithjpa.repo.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,5 +34,9 @@ public class JobService {
 
     public void deleteJob(int id) {
         this.jobRepository.deleteById(id);
+    }
+
+    public List<JobPost> searchByKeyword(String q) {
+        return this.jobRepository.findJobPostsByPostProfileOrPostDescContains(q, q);
     }
 }
