@@ -62,4 +62,21 @@ public class ProductController extends ApiController {
             return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.NOT_FOUND);
         }
     }
+
+    @PutMapping("/products/{id}/update")
+    public ResponseEntity<?> update(@PathVariable String id, @RequestPart Product product, @RequestPart MultipartFile imageFile) {
+        Product updatedProduct = null;
+        try {
+            updatedProduct = this.productService.updateProduct(product, imageFile);
+            return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/products/{id}/delete")
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        this.productService.deleteProduct(id);
+        return new ResponseEntity<>(Map.of("message", "Product deleted successfully"), HttpStatus.OK);
+    }
 }

@@ -40,7 +40,7 @@ const Product = () => {
 
   const deleteProduct = async () => {
     try {
-      await axios.delete(`http://localhost:8080/api/products/${id}`);
+      await axios.delete(`http://localhost:8080/api/products/${id}/delete`);
       removeFromCart(id);
       console.log("Product deleted successfully");
       alert("Product deleted successfully");
