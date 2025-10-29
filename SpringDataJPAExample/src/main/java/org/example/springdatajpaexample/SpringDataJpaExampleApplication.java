@@ -30,11 +30,19 @@ public class SpringDataJpaExampleApplication {
         s3.setName("Jane");
         s3.setMarks(50);
 
+        System.out.println("-----------------------------------------------------");
         studentRepo.save(s1);
         studentRepo.save(s2);
         studentRepo.save(s3);
 
+        System.out.println("-----------------------------------------------------");
+        System.out.println("-------findAll()----------");
         studentRepo.findAll().forEach(System.out::println);
+
+        System.out.println("-----------------------------------------------------");
+        System.out.println("-------findById()----------");
+        System.out.println(studentRepo.findById(101).orElse(null));
+
     }
 
 }
