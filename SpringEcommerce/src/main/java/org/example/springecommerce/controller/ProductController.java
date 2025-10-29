@@ -79,4 +79,10 @@ public class ProductController extends ApiController {
         this.productService.deleteProduct(id);
         return new ResponseEntity<>(Map.of("message", "Product deleted successfully"), HttpStatus.OK);
     }
+
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Product>> search(@RequestParam String query) {
+        List<Product> products = this.productService.search(query);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }

@@ -28,7 +28,6 @@ public class Product {
     private Date releaseDate;
     private boolean productAvailable;
     private int stockQuantity;
-    @JsonIgnore
     private String imageName;
     @JsonIgnore
     private String imageType;
