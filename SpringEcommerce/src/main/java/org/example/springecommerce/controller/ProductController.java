@@ -44,4 +44,12 @@ public class ProductController extends ApiController {
             return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/products/{id}/image")
+    public ResponseEntity<?> getImage(@PathVariable String id) {
+        Product p = this.productService.getProductById(id);
+        if (p == null)
+            return new ResponseEntity<>(Map.of("error", "Product Not Found"), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(p.getImageData(), HttpStatus.OK);
+    }
 }
