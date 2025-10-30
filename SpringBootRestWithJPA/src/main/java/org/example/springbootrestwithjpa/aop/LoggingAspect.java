@@ -1,5 +1,6 @@
 package org.example.springbootrestwithjpa.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -12,7 +13,7 @@ public class LoggingAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
     @Before(value = "execution(* org.example.springbootrestwithjpa.service.JobService.*(..))")
-    public void call() {
-        LOGGER.info("Call AOP ...");
+    public void call(JoinPoint jp) {
+        LOGGER.info("Call AOP ... from " + jp.getSignature().getName());
     }
 }
