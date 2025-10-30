@@ -1,6 +1,7 @@
 package org.example.springbootrestwithjpa.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -15,5 +16,10 @@ public class LoggingAspect {
     @Before(value = "execution(* org.example.springbootrestwithjpa.service.JobService.*(..))")
     public void call(JoinPoint jp) {
         LOGGER.info("Call AOP ... from " + jp.getSignature().getName());
+    }
+
+    @AfterReturning(value = "execution(* org.example.springbootrestwithjpa.service.JobService.*(..))")
+    public void afterReturning(JoinPoint jp) {
+
     }
 }
