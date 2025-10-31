@@ -1,7 +1,9 @@
 package org.example.springsecurity.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.example.springsecurity.model.Student;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +32,10 @@ public class StudentController {
     public ResponseEntity<Map<String, String>> addStudent(@RequestBody Student student){
         students.add(student);
         return ResponseEntity.ok().body(Map.of("message", "Student added successfully!"));
+    }
+
+    @GetMapping("/token")
+    public ResponseEntity<CsrfToken> getToken(HttpServletRequest request){
+        return ResponseEntity.ok().body((CsrfToken) request.getAttribute("_csrf"));
     }
 }
