@@ -1,6 +1,7 @@
 package org.example.springsecurity.controller;
 
 import org.example.springsecurity.model.User;
+import org.example.springsecurity.service.JwtService;
 import org.example.springsecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,9 @@ public class UserController {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    JwtService jwtService;
+
     @PostMapping("register")
     public User register(@RequestBody User user) {
         return this.userService.saveUser(user);
@@ -29,7 +33,7 @@ public class UserController {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         if(authentication.isAuthenticated()) {
-            return "success";
+            return jwtService.generateToken(user.getUsername());
         }
         return "fail";
     }
