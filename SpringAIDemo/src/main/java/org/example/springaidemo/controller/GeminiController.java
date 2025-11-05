@@ -1,6 +1,7 @@
 package org.example.springaidemo.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.google.genai.GoogleGenAiChatModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +19,11 @@ public class GeminiController {
 
     @GetMapping("/api/gemini/ask")
     public ResponseEntity<String> greet(@RequestParam String q) {
-        String response = chatClient
+        ChatResponse chatResponse = chatClient
                 .prompt("Answer the following question in one precise line.. Do not add anything else in the response. " + q)
                 .call()
-                .content();
+                .chatResponse();
+        String response = chatResponse.getResult().getOutput().getText();
         return ResponseEntity.ok(response);
     }
 }
