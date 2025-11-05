@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class GeminiController {
     private ChatClient chatClient;
 
-    public GeminiController(GoogleGenAiChatModel chatModel) {
-        this.chatClient = ChatClient.create(chatModel);
+//    public GeminiController(GoogleGenAiChatModel chatModel) {
+//        this.chatClient = ChatClient.create(chatModel);
+//    }
+
+    // Automatically builds the Chat client based on the api key you set in application.properties
+    public GeminiController(ChatClient.Builder builder) {
+        this.chatClient = builder.build();
     }
 
     @GetMapping("/api/gemini/ask")
